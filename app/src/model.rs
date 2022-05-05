@@ -46,6 +46,17 @@ pub struct NewTask {
     pub dead_line: NaiveDateTime,
 }
 
+#[derive(Deserialize, Serialize)]
+pub struct  UpdateUser {
+    pub e_mail: String,
+}
+
+#[derive(Deserialize, Serialize)]
+pub struct  UpdateTask {
+    pub dead_line: NaiveDateTime,
+}
+
+
 impl Selectable for UserTask {
     type Columns = (users::user_name, tasks::content, tasks::dead_line, tasks::finished_flag);
 

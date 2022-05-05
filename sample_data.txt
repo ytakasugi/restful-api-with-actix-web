@@ -12,3 +12,9 @@ curl http://localhost:8080/todo/search/user/1/task/all
 
 curl http://localhost:8080/todo/search/user/all
 curl http://localhost:8080/todo/search/task/all
+
+curl -X PUT http://localhost:8080/todo/update/user/1/task/1
+curl -X PUT -H "Content-Type: application/json" -d '{"dead_line": "2022-06-30T12:00:00"}' http://localhost:8080/todo/update/user/1/task/2
+curl -X PUT -H "Content-Type: application/json" -d '{"e_mail": "test01test01@example.com"}' http://localhost:8080/todo/update/user/2
+curl -X PUT http://localhost:8080/todo/update/logicaldelete/user/2
+curl -X DELETE http://localhost:8080/todo/delete/user/2
