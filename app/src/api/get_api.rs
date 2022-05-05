@@ -4,6 +4,8 @@ use diesel::RunQueryDsl;
 
 use actix_web::{get, web, Responder, Result};
 
+use chrono::NaiveDateTime;
+
 use crate::schema;
 use crate::util::db;
 use crate::model::{UserTask, Selectable};
@@ -61,8 +63,8 @@ async fn get_all_task(db: web::Data<db::Pool>) -> Result<impl Responder> {
     let conn = db.get().unwrap();
 
     let all_task = schema::tasks::table
-        .select((schema::tasks::task_id, schema::tasks::user_id, schema::tasks::content))
-        .load::<(i32, i32, String)>(&conn)
+        .select((schema::tasks::task_id, schema::tasks::user_id, schema::tasks::content, schema::tasks::dead_line))
+        .load::<(i32, i32, String, NaiveDateTime)>(&conn)
         .expect("Error.");
 
         Ok(web::Json(all_task))
