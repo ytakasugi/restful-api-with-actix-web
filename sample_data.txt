@@ -1,0 +1,7 @@
+curl -X POST -H "Content-Type: application/json" -d '{"user_name": "admin", "e_mail": "admin@example.com"}' http://localhost:8080/todo/regist/user
+
+curl -X POST -H "Content-Type: application/json" -d '{"user_id": 1, "content": "Rust", "dead_line": "2022-05-30T12:00:00"}' http://localhost:8080/todo/regist/task
+curl -X POST -H "Content-Type: application/json" -d '{"user_id": 1, "content": "Go", "dead_line": "2022-05-30T12:00:00"}' http://localhost:8080/todo/regist/task
+curl -X POST -H "Content-Type: application/json" -d '{"user_id": 1, "content": "Java", "dead_line": "2022-05-30T12:00:00"}' http://localhost:8080/todo/regist/task
+
+curl http://localhost:8080/todo/search/user/1/1

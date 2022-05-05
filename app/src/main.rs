@@ -24,6 +24,7 @@ async fn main() -> std::io::Result<()> {
             .app_data(Data::new(pool.clone()))
             .wrap(middleware::Logger::default())
             .service(get_api::get_task)
+            .service(post_api::new_user)
             .service(post_api::new_task)
     })
     .bind("127.0.0.1:8080")?
