@@ -4,4 +4,11 @@ curl -X POST -H "Content-Type: application/json" -d '{"user_id": 1, "content": "
 curl -X POST -H "Content-Type: application/json" -d '{"user_id": 1, "content": "Go", "dead_line": "2022-05-30T12:00:00"}' http://localhost:8080/todo/regist/task
 curl -X POST -H "Content-Type: application/json" -d '{"user_id": 1, "content": "Java", "dead_line": "2022-05-30T12:00:00"}' http://localhost:8080/todo/regist/task
 
-curl http://localhost:8080/todo/search/user/1/1
+curl http://localhost:8080/todo/search/user/1/task/1
+curl http://localhost:8080/todo/search/user/1/task/2
+curl http://localhost:8080/todo/search/user/1/task/3
+
+curl http://localhost:8080/todo/search/user/1/task/all
+
+curl http://localhost:8080/todo/search/user/all
+curl http://localhost:8080/todo/search/task/all

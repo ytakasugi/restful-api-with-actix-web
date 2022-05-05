@@ -21,7 +21,7 @@ table! {
     }
 }
 
-joinable!(users -> tasks (user_id));
+joinable!(tasks -> users (user_id));
 
 allow_tables_to_appear_in_same_query!(
     tasks,
