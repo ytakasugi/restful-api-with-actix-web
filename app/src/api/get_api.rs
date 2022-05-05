@@ -4,11 +4,9 @@ use diesel::RunQueryDsl;
 
 use actix_web::{get, web, Responder, Result};
 
-use chrono::NaiveDateTime;
-
 use crate::schema;
 use crate::util::db;
-use crate::model::{UserTask, Selectable};
+use crate::model::{UserTask, AllUser, AllTask, Selectable};
 
 
 // 特定のユーザーの特定のタスクを取得
@@ -49,9 +47,9 @@ async fn get_user_all_task(db: web::Data<db::Pool>, path: web::Path<i32>) -> Res
 async fn get_all_user(db: web::Data<db::Pool>) -> Result<impl Responder> {
     let conn = db.get().unwrap();
 
-    let all_user = schema::users::table
-        .select((schema::users::user_id, schema::users::user_name, schema::users::e_mail))
-        .load::<(i32, String, String)>(&conn)
+    let all_user: Vec<AllUser> = schema::users::table
+        .select(AllUser::columns())
+        .get_results(&conn)
         .expect("Error.");
 
         Ok(web::Json(all_user))
@@ -62,9 +60,9 @@ async fn get_all_user(db: web::Data<db::Pool>) -> Result<impl Responder> {
 async fn get_all_task(db: web::Data<db::Pool>) -> Result<impl Responder> {
     let conn = db.get().unwrap();
 
-    let all_task = schema::tasks::table
-        .select((schema::tasks::task_id, schema::tasks::user_id, schema::tasks::content, schema::tasks::dead_line))
-        .load::<(i32, i32, String, NaiveDateTime)>(&conn)
+    let all_task: Vec<AllTask> = schema::tasks::table
+        .select(AllTask::columns())
+        .get_results(&conn)
         .expect("Error.");
 
         Ok(web::Json(all_task))
