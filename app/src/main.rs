@@ -34,6 +34,7 @@ async fn main() -> std::io::Result<()> {
             .service(put_api::task_completed)
             .service(put_api::update_dead_line)
             .service(delete_api::delete_user)
+            .service(delete_api::bulk_delete_user)
     })
     .bind("127.0.0.1:8080")?
     .run()
