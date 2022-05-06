@@ -39,7 +39,7 @@ async fn get_user_all_task(db: web::Data<db::Pool>, path: web::Path<i32>) -> Res
         .get_results(&conn)
         .expect("Error.");
 
-        Ok(web::Json(user_all_task))
+    Ok(web::Json(user_all_task))
 }
 
 // 特定のユーザーを参照するAPI
@@ -54,7 +54,7 @@ async fn get_user(db: web::Data<db::Pool>, path: web::Path<i32>) -> Result<impl 
         .get_results(&conn)
         .expect("Error.");
 
-        Ok(web::Json(user))
+    Ok(web::Json(user))
 }
 
 // 全てのユーザーを参照するAPI
@@ -67,7 +67,7 @@ async fn get_all_user(db: web::Data<db::Pool>) -> Result<impl Responder> {
         .get_results(&conn)
         .expect("Error.");
 
-        Ok(web::Json(all_user))
+    Ok(web::Json(all_user))
 }
 
 // 全てのタスクを参照するAPI
@@ -80,5 +80,5 @@ async fn get_all_task(db: web::Data<db::Pool>) -> Result<impl Responder> {
         .get_results(&conn)
         .expect("Error.");
 
-        Ok(web::Json(all_task))
+    Ok(web::Json(all_task))
 }
