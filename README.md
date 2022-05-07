@@ -1,4 +1,4 @@
-# Rust & actix-web & diesel(Postgrelsql)で作るRestful API
+# Rust & actix-web & diesel(PostgreSQL)で作るRestful API
 
 ## [diesel doc](https://docs.rs/diesel/latest/diesel/index.html)
 
