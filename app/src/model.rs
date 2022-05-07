@@ -15,14 +15,14 @@ pub struct UserTask {
     pub finished_flag: bool,
 }
 
-#[derive(Debug, Queryable, Deserialize, Serialize)]
+#[derive(Queryable, Deserialize, Serialize)]
 pub struct User {
     pub user_id: i32,
     pub user_name: String,
     pub e_mail: String,
 }
 
-#[derive(Debug, Queryable, Deserialize, Serialize)]
+#[derive(Queryable, Deserialize, Serialize)]
 pub struct Task {
     pub task_id: i32,
     pub user_id: i32,
@@ -48,12 +48,15 @@ pub struct NewTask {
 
 #[derive(Deserialize, Serialize)]
 pub struct  UpdateUser {
-    pub e_mail: String,
+    pub e_mail: Option<String>,
+    pub finished_flag: Option<bool>
 }
 
 #[derive(Deserialize, Serialize)]
 pub struct  UpdateTask {
-    pub dead_line: NaiveDateTime,
+    pub content: Option<String>,
+    pub dead_line: Option<NaiveDateTime>,
+    pub finished_flag: Option<bool>
 }
 
 
