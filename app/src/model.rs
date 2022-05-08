@@ -7,7 +7,7 @@ pub trait Selectable {
     fn columns() -> Self::Columns;
 }
 
-#[derive(Debug, Queryable, Deserialize, Serialize)]
+#[derive(Queryable, Deserialize, Serialize)]
 pub struct UserTask {
     pub user_name: String,
     pub content: String,
