@@ -8,10 +8,10 @@ mod api;
 mod util;
 mod schema;
 mod model;
-mod logger;
 
 use api::{get_api, post_api, put_api, delete_api};
 use util::db;
+use util::logger;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
