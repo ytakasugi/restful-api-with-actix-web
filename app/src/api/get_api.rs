@@ -10,7 +10,7 @@ use crate::model::{UserTask, User, Task, Selectable};
 
 
 // 特定のユーザーの特定のタスクを取得
-#[get("/todo/user/{user_id}/task/{task_id}")]
+#[get("/todo/users/{user_id}/tasks/{task_id}")]
 async fn get_task(db: web::Data<db::Pool>, path: web::Path<(i32, i32)>) -> Result<impl Responder> {
     let conn = db.get().unwrap();
     let (user_id, task_id) = path.into_inner();
@@ -27,7 +27,7 @@ async fn get_task(db: web::Data<db::Pool>, path: web::Path<(i32, i32)>) -> Resul
 }
 
 // 特定のユーザーの全タスクを取得するAPI
-#[get("/todo/user/{user_id}/task")]
+#[get("/todo/users/{user_id}/tasks")]
 async fn get_user_all_task(db: web::Data<db::Pool>, path: web::Path<i32>) -> Result<impl Responder> {
     let conn = db.get().unwrap();
     let user_id = path.into_inner();
@@ -43,7 +43,7 @@ async fn get_user_all_task(db: web::Data<db::Pool>, path: web::Path<i32>) -> Res
 }
 
 // 特定のユーザーを参照するAPI
-#[get("/todo/user/{user_id}")]
+#[get("/todo/users/{user_id}")]
 async fn get_user(db: web::Data<db::Pool>, path: web::Path<i32>) -> Result<impl Responder> {
     let conn = db.get().unwrap();
     let user_id = path.into_inner();
@@ -58,7 +58,7 @@ async fn get_user(db: web::Data<db::Pool>, path: web::Path<i32>) -> Result<impl 
 }
 
 // 全てのユーザーを参照するAPI
-#[get("/todo/user")]
+#[get("/todo/users")]
 async fn get_all_user(db: web::Data<db::Pool>) -> Result<impl Responder> {
     let conn = db.get().unwrap();
 
@@ -71,7 +71,7 @@ async fn get_all_user(db: web::Data<db::Pool>) -> Result<impl Responder> {
 }
 
 // 全てのタスクを参照するAPI
-#[get("/todo/task")]
+#[get("/todo/tasks")]
 async fn get_all_task(db: web::Data<db::Pool>) -> Result<impl Responder> {
     let conn = db.get().unwrap();
 

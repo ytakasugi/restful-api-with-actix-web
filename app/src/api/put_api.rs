@@ -11,7 +11,7 @@ use crate::util::db;
 use crate::model::{UpdateUser, UpdateTask};
 
 // ユーザー情報を更新するAPI
-#[put("/todo/user/{user_id}")]
+#[put("/todo/users/{user_id}")]
 async fn update_user_info(db: web::Data<db::Pool>, path: web::Path<i32>, item: web::Json<UpdateUser>) -> Result<impl Responder> {
     let conn = db.get().unwrap();
     let user_id = path.into_inner();
@@ -47,7 +47,7 @@ async fn update_user_info(db: web::Data<db::Pool>, path: web::Path<i32>, item: w
 }
 
 // タスクの内容を変更するAPI
-#[put("/todo/user/{user_id}/task/{task_id}")]
+#[put("/todo/users/{user_id}/tasks/{task_id}")]
 async fn update_task_info(db: web::Data<db::Pool>, path: web::Path<(i32, i32)>, item: web::Json<UpdateTask>) -> Result<impl Responder> {
     let conn = db.get().unwrap();
     let (user_id, task_id) = path.into_inner();

@@ -1,12 +1,12 @@
 ■ユーザー追加
-curl -X POST -H "Content-Type: application/json" -d '{"user_name": "admin", "e_mail": "admin@example.com"}' http://localhost:8080/todo/regist/user
+curl -X POST -H "Content-Type: application/json" -d '{"user_name": "admin", "e_mail": "admin@example.com"}' http://localhost:8080/todo/users
 
-curl -X POST -H "Content-Type: application/json" -d '{"user_name": "test01", "e_mail": "test01@example.com"}' http://localhost:8080/todo/regist/user
-curl -X POST -H "Content-Type: application/json" -d '{"user_name": "test02", "e_mail": "test02@example.com"}' http://localhost:8080/todo/regist/user
-curl -X POST -H "Content-Type: application/json" -d '{"user_name": "test03", "e_mail": "test03@example.com"}' http://localhost:8080/todo/regist/user
-curl -X POST -H "Content-Type: application/json" -d '{"user_name": "test04", "e_mail": "test04@example.com"}' http://localhost:8080/todo/regist/user
-curl -X POST -H "Content-Type: application/json" -d '{"user_name": "test05", "e_mail": "test05@example.com"}' http://localhost:8080/todo/regist/user
-curl -X POST -H "Content-Type: application/json" -d '{"user_name": "test06", "e_mail": "test06@example.com"}' http://localhost:8080/todo/regist/user
+curl -X POST -H "Content-Type: application/json" -d '{"user_name": "test01", "e_mail": "test01@example.com"}' http://localhost:8080/todo/users
+curl -X POST -H "Content-Type: application/json" -d '{"user_name": "test02", "e_mail": "test02@example.com"}' http://localhost:8080/todo/users
+curl -X POST -H "Content-Type: application/json" -d '{"user_name": "test03", "e_mail": "test03@example.com"}' http://localhost:8080/todo/users
+curl -X POST -H "Content-Type: application/json" -d '{"user_name": "test04", "e_mail": "test04@example.com"}' http://localhost:8080/todo/users
+curl -X POST -H "Content-Type: application/json" -d '{"user_name": "test05", "e_mail": "test05@example.com"}' http://localhost:8080/todo/users
+curl -X POST -H "Content-Type: application/json" -d '{"user_name": "test06", "e_mail": "test06@example.com"}' http://localhost:8080/todo/users
 
 ■タスク追加
 curl -X POST -H "Content-Type: application/json" -d '{"user_id": 1, "content": "Rust", "dead_line": "2022-05-30T12:00:00"}' http://localhost:8080/todo/regist/task
@@ -14,25 +14,17 @@ curl -X POST -H "Content-Type: application/json" -d '{"user_id": 1, "content": "
 curl -X POST -H "Content-Type: application/json" -d '{"user_id": 1, "content": "Java", "dead_line": "2022-05-30T12:00:00"}' http://localhost:8080/todo/regist/task
 
 ■参照
-curl http://localhost:8080/todo/search/user/1/task/1
-curl http://localhost:8080/todo/search/user/1/task/2
-curl http://localhost:8080/todo/search/user/1/task/3
-
-curl http://localhost:8080/todo/search/user/1/task/all
-
-curl http://localhost:8080/todo/search/user/all
-curl http://localhost:8080/todo/search/task/all
+curl http://localhost:8080/todo/users/1/tasks/1
+curl http://localhost:8080/todo/users
+curl http://localhost:8080/todo/users/1/tasks
+curl http://localhost:8080/todo/tasks
 
 ■更新
-curl -X PUT http://localhost:8080/todo/update/user/1/task/1
-curl -X PUT -H "Content-Type: application/json" -d '{"dead_line": "2022-06-30T12:00:00"}' http://localhost:8080/todo/update/user/1/task/2
-curl -X PUT -H "Content-Type: application/json" -d '{"e_mail": "test01test01@example.com"}' http://localhost:8080/todo/update/user/2
-
-curl -X PUT http://localhost:8080/todo/update/logicaldelete/user/3
-curl -X PUT http://localhost:8080/todo/update/logicaldelete/user/5
-curl -X PUT http://localhost:8080/todo/update/logicaldelete/user/6
+curl -X PUT -H "Content-Type: application/json" -d '{"dead_line": "2022-06-30T12:00:00"}' http://localhost:8080/todo/users/1/tasks/1
+curl -X PUT -H "Content-Type: application/json" -d '{"e_mail": "test01test01@example.com"}' http://localhost:8080/todo/users/2
 
 ■削除
-curl -X DELETE http://localhost:8080/todo/delete/user/2
+curl -X DELETE http://localhost:8080/todo/delete/users/2
+
 ■一括削除
-curl -X DELETE http://localhost:8080/todo/bulk/delete/user
+curl -X DELETE http://localhost:8080/todo/bulk/delete/users

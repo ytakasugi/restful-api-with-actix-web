@@ -6,7 +6,7 @@ use crate::util::db;
 use crate::model::{NewUser, NewTask};
 
 // ユーザを新規登録
-#[post("/todo/user")]
+#[post("/todo/users")]
 async fn new_user(db: web::Data<db::Pool>, item: web::Json<NewUser>) -> Result<impl Responder> {
     let conn = db.get().unwrap();
     let new_user = NewUser {
@@ -22,7 +22,7 @@ async fn new_user(db: web::Data<db::Pool>, item: web::Json<NewUser>) -> Result<i
 }
 
 // タスクを新規登録
-#[post("/todo/task")]
+#[post("/todo/tasks")]
 async fn new_task(db: web::Data<db::Pool>, item: web::Json<NewTask>) -> Result<impl Responder> {
     let conn = db.get().unwrap();
     let new_task = NewTask {
