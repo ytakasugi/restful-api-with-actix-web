@@ -32,8 +32,8 @@ async fn update_user_info(db: web::Data<db::Pool>, path: web::Path<i32>, item: w
             .expect("User info Update Error.");
     }
 
-    // ユーザーを論理削除するAPI(後続の削除用APIで物理削除する)
-    if let Some(x) = item.finished_flag {
+    // ユーザーを論理削除(後続の削除用APIで物理削除する)
+    if let Some(x) = item.delete_flag {
         diesel::update(target)
             .set((
                 schema::users::dsl::delete_flag.eq(x),

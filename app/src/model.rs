@@ -49,7 +49,7 @@ pub struct NewTask {
 #[derive(Deserialize, Serialize)]
 pub struct  UpdateUser {
     pub e_mail: Option<String>,
-    pub finished_flag: Option<bool>
+    pub delete_flag: Option<bool>
 }
 
 #[derive(Deserialize, Serialize)]
