@@ -11,4 +11,3 @@ RUN apt-get update && \
 WORKDIR /workspace
 
 COPY ./app ./workspace/app
-COPY ./*.sh ./workspace
