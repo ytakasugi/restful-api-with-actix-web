@@ -25,7 +25,7 @@ async fn delete_user(db: web::Data<db::Pool>, path: web::Path<i32>) -> Result<im
 }
 
 // ユーザーを一括で物理削除するAPI
-#[delete("/todo/bulk/users")]
+#[delete("/todo/users")]
 async fn bulk_delete_user(db: web::Data<db::Pool>) -> Result<impl Responder> {
     let conn = db.get().unwrap();
     // 削除対象を選択する
